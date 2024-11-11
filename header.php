@@ -40,6 +40,18 @@
                                 <h1 class="logo"><a href="index.html">B.</a></h1><!-- Change logo text -->
                             </div>
                         </div>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+    <nav class="main_navigation">
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'main_menu', // Название местоположения меню
+            'container' => 'ul', // Использовать тег <ul> для обертки
+            'menu_class' => 'nav', // Класс для <ul>
+            'fallback_cb' => false, // Если меню не задано, не показывать ничего
+        ));
+        ?>
+    </nav>
+</div>
                     </div> <!-- end row -->
                 </div> <!-- end container -->
             </div>

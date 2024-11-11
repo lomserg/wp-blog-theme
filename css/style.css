@@ -1194,9 +1194,6 @@ footer .logo a {
   background-color: #fff;
 }
 
-.blog-wrapper .blog-content .content-box .content h4:hover {
-}
-
 .blog-wrapper .blog-content .content-box .content .blog-buttons {
   padding: 0px 0 20px 0;
 }
@@ -1819,4 +1816,8 @@ footer .logo a {
 
 .block-portfolio__item {
   margin-bottom: 10px;
+}
+
+.nav {
+  display: flex;
 }
