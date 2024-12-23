@@ -1229,7 +1229,9 @@ footer .logo a {
 }
 
 .blog_block .blog-img-frame img {
-  width: auto;
+  width: 360px;
+  height: 360px;
+  object-fit: cover;
 }
 
 .blog-wrapper .blog-content .content-box .block-date {

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Экороутер - Российский производитель маршрутизатор</title>
+    <title>Brendon - Professional Photographer</title>
     <meta name="description" content="">
 
     <!-- Mobile Specific Meta -->
@@ -30,7 +30,7 @@
 
 <body>
     <!-- Header Section -->
-    <header class="blog_head_bg blog_head_main">
+    <header class="blog_head_bg">
         <div class="overlay_color">
             <div class="mnu_line">
                 <div class="container">
@@ -40,18 +40,6 @@
                                 <h1 class="logo"><a href="index.html">B.</a></h1><!-- Change logo text -->
                             </div>
                         </div>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <nav class="main_navigation">
-                                <?php
-        wp_nav_menu(array(
-            'theme_location' => 'main_menu', // Название местоположения меню
-            'container' => 'ul', // Использовать тег <ul> для обертки
-            'menu_class' => 'nav', // Класс для <ul>
-            'fallback_cb' => false, // Если меню не задано, не показывать ничего
-        ));
-        ?>
-                            </nav>
-                        </div>
                     </div> <!-- end row -->
                 </div> <!-- end container -->
             </div>
@@ -59,24 +47,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="content_name">
-                                <p class="hello">WELCOME. I AM</p>
-                                <p class="name">BRENDON WILLIAMS</p>
+                            <div class="content_head_txt">
+                                <p><?php the_title( ) ?></p>
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="content_prof">
-                                <p><span>The best designer ever.</span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 clearfix">
-                            <div class="content_download">
-                                <p><a href="download/CV.doc" download>Download CV</a></p>
+                            <div class="content_bottom_txt">
+                                <p>Brendon Williams - 27 January 2023</p>
                             </div>
                         </div>
                     </div><!-- end row -->
                 </div><!-- end container -->
             </div>
+
         </div>
     </header>
-    <!-- End Header -->
+    <!-- End Header Section -->

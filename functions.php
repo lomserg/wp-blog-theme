@@ -44,3 +44,75 @@ function register_my_menu() {
     register_nav_menu('main_menu', 'Primary Menu'); // Регистрация меню с названием 'primary'
 }
 add_action('after_setup_theme', 'register_my_menu');
+
+add_filter( 'excerpt_more', fn() => '...' );
+
+add_filter( 'excerpt_length', function(){
+	return 20;
+} );
+
+function custom_breadcrumbs() {
+    $delimiter = '&gt;'; // Delimiter between breadcrumb links
+    $home = 'Главная'; // Text for the Home link
+    $before = '<span class="current">'; // Before current page text
+    $after = '</span>'; // After current page text
+
+    // Start breadcrumb if we're not on the home or front page, or if the page is paginated
+    if (!is_home() && !is_front_page() || is_paged()) {
+        echo '<div class="breadcrumb"><nav class="container"><ul>';
+        
+        // Home link
+        echo '<li><a href="' . home_url() . '">' . $home . '</a></li>';
+
+        // Check if we are on a category page
+        if (is_category()) {
+            // Display "Блог" before the category name
+            echo '<li>' . $before . 'Блог' . $after . $delimiter . '</li>';
+            
+            // Get the current category object
+            $category = get_queried_object();
+            echo '<li>' . $before . 'Категория: ' . $category->name . $after . '</li>'; // Display category name
+        } elseif (is_single()) {
+            // If it's a single post, display the post title
+            echo '<li>' . $before . get_the_title() . $after . '</li>';
+        } else {
+            // Default breadcrumb for other pages
+            echo '<li>' . $before . 'Блог' . $after . '</li>';
+        }
+
+        echo '</ul></nav></div>';
+    }
+}
+
+// Register support for post thumbnails in your theme
+function my_theme_setup(){
+    add_theme_support('post-thumbnails');
+}
+
+add_action('after_setup_theme', 'my_theme_setup');
+
+// Custom Post Type: 'products'
+function cptui_register_my_cpts() {
+    $labels = [
+        "name" => esc_html__( "products", "custom-post-type-ui" ),
+        "singular_name" => esc_html__( "product", "custom-post-type-ui" ),
+    ];
+
+    $args = [
+        "label" => esc_html__( "products", "custom-post-type-ui" ),
+        "labels" => $labels,
+        "public" => true,
+        "publicly_queryable" => true,
+        "show_ui" => true,
+        "show_in_rest" => true,
+        "has_archive" => true,
+        "show_in_menu" => true,
+        "show_in_nav_menus" => true,
+        "rewrite" => [ "slug" => "products" ],
+        "supports" => [ "title", "editor", "thumbnail", "excerpt", "custom-fields"], // Thumbnail support
+    ];
+
+    register_post_type( "products", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts' );

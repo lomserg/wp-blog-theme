@@ -34,13 +34,16 @@
                 <h2>About me</h2>
             </div>
             <div class="col-md-4 col-sm-4 small_screen">
-                <p>Hello, I’m Brendon, Creative Designert & User Experience Engineer based in New York – I create web digital products with professional skills and love.</p>
+                <p>Hello, I’m Brendon, Creative Designert & User Experience Engineer based in New York – I create web
+                    digital products with professional skills and love.</p>
             </div>
             <div class="col-md-4 col-sm-4 small_screen">
-                <p>Wed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorem laudantium, totam rem aperiam, eaque ip quae ab illo inventore veritatis et quasi.</p>
+                <p>Wed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorem laudantium, totam
+                    rem aperiam, eaque ip quae ab illo inventore veritatis et quasi.</p>
             </div>
             <div class="col-md-4 col-sm-4 small_screen">
-                <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia et consequuntur magni perspiciatis unde.</p>
+                <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                    aut fugit, sed quia et consequuntur magni perspiciatis unde.</p>
             </div>
         </div><!-- end row -->
         <div class="row about_block">
@@ -108,56 +111,61 @@
         <div class="container">
             <!-- Title -->
             <div class="section_header">
-                <h2>Blog</h2>
+                <h2>Новости</h2>
             </div>
             <!-- End Title -->
             <div class="row">
+                <?php 
+    // Use WP_Query to fetch the latest 2 posts
+    $args = array(
+        'post_type' => 'post', // Query for posts
+        'posts_per_page' => 2, // Number of posts to show
+        'suppress_filters' => true // Avoid filtering by plugins or themes
+    );
+
+    $query = new WP_Query($args); // Custom query
+
+    // Start the loop to display posts
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post(); 
+    ?>
                 <div class="col-md-6 col-sm-6">
                     <div class="blog_block">
                         <div class="blog-img-frame">
-                            <a href="blog-single.html" class="blog-img">
-                                <img src="<?php echo B_IMG_DIR; ?>img-1.jpg" alt="">
+                            <a href="<?php the_permalink(); ?>" class="blog-img">
+                                <!-- Display the post's featured image if it exists -->
+                                <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail('medium'); ?>
+                                <?php else : ?>
+                                <img src="<?php echo B_IMG_DIR; ?>img-1.jpg" alt="default-image">
+                                <?php endif; ?>
                             </a>
                         </div>
-                        <!--./blog-img-frame-->
+                        <!-- ./blog-img-frame -->
 
                         <div class="brief-content">
-                            <h4 class="brief-title"><a href="blog-single.html">Creating your own website</a></h4>
-                            <p class="brief-date">Brendon Williams - 27 January 2023</p>
-                            <p class="brief">Hello, I’m Brendon, Creative Designer & User Experience Engineer based in New York – I create awesome web digital products. I know you can too. You can read my journal to improve yourself.</p>
+                            <h4 class="brief-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                            <p class="brief-date"><?php the_author(); ?> - <?php the_date(); ?></p>
+                            <p class="brief"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
                             <div class="blog-buttons">
-                                <a href="blog-single.html">Read more<i class="fa fa-long-arrow-right"></i></a>
+                                <a href="<?php the_permalink(); ?>">Подробнее<i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
-                        <!--./brief-content-->
+                        <!-- ./brief-content -->
                     </div>
                     <!-- /.blog_block -->
                 </div>
-                <!-- /.col-md-6 -->
-                <div class="col-md-6 col-sm-6">
-                    <div class="blog_block">
-                        <div class="blog-img-frame">
-                            <a href="blog-single.html" class="blog-img">
-                                <img src="<?php echo B_IMG_DIR; ?>img-2.jpg" alt="">
-                            </a>
-                        </div>
-                        <!--./blog-img-frame-->
-
-                        <div class="brief-content">
-                            <h4 class="brief-title"><a href="blog-single.html">Creating your own website</a></h4>
-                            <p class="brief-date">Brendon Williams - 27 January 2023</p>
-                            <p class="brief">Hello, I’m Brendon, Creative Designer & User Experience Engineer based in New York – I create awesome web digital products. I know you can too. You can read my journal to improve yourself.</p>
-                            <div class="blog-buttons">
-                                <a href="blog-single.html">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!--./brief-content-->
-                    </div>
-                    <!-- /.blog_block -->
-                </div>
+                <?php 
+        endwhile;
+        wp_reset_postdata(); // Reset the post data after the custom query
+    else : 
+    ?>
+                <p>No posts found.</p>
+                <?php endif; ?>
             </div>
+
             <div class="blog_read_more">
-                <a href="http://localhost/wp-work/blog/">read more</a>
+                <a href="http://localhost/wp-sandbox/blog/">read more</a>
             </div>
             <!--.row-->
         </div>
