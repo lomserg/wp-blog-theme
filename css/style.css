@@ -2083,3 +2083,76 @@ a {
 .shawcace__header-text {
   font-size: 20px;
 }
+/* hero */
+.hero {
+  max-height: 574px;
+  width: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+
+  opacity: 0.6;
+}
+
+.hero__wrapper {
+  position: relative; /* Add this line */
+  z-index: 10;
+  color: #fff;
+  width: 50%;
+  max-width: 1440px;
+  padding-left: 80px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.hero__title {
+  font-family: "Jost";
+  font-size: 70px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.hero__text {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.slider-container {
+  height: 570px;
+}
+.swiper-button-prev {
+  color: #fff !important;
+}
+
+.swiper-button-next {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  /* background: #abd167 !important; */
+  color: #fff;
+  font-size: 26px;
+  position: absolute;
+  margin: 0;
+  color: #fff !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff !important;
+}

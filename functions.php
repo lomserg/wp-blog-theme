@@ -123,25 +123,28 @@ function special_nav_class ($classes, $item) {
 }
 
 // Enqueue styles
-function brendon_register_styles()
-{
-    // Enqueue Bootstrap first for dependency
-    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . "/css/bootstrap/bootstrap.min.css", array(), '1.0', 'all');
-
-    // Enqueue custom styles
-    wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", array('bootstrap-css'), '1.0', 'all');
-    wp_enqueue_style('media-css', get_template_directory_uri() . "/css/media.css", array('bootstrap-css'), '1.0', 'all');
-    wp_enqueue_style('product-css', get_template_directory_uri() . "/css/product.css", array(), '1.0', 'all'); // Changed handle to 'product-css'
-
-    wp_enqueue_script( 'myscript', get_template_directory_uri() . '/js/main.js', array(), 
-    '1.0.0', 
-    array(
-        'in_footer' => false,
-        'strategy'  => 'async',
-    ));
-
+function brendon_register_styles_scripts() {
+    // Enqueue styles
+    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . "/css/bootstrap/bootstrap.min.css", [], '1.0', 'all');
+    wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", ['bootstrap-css'], '1.0', 'all');
+    wp_enqueue_style('swiper-css', get_template_directory_uri() . "/css/swiper/swiper-bundle.min.css", [], '1.0', 'all');
+    
+    // Enqueue scripts
+  // Enqueue scripts
+  wp_enqueue_script('swiper-js', get_template_directory_uri() . '/js/swiper-bundle.js', [], '1.0.0', true); // Load in footer
+  wp_enqueue_script('slider-js', get_template_directory_uri() . '/js/slider.js', ['swiper-js'], '1.0.0', true); // Ensure Swiper is a dependency
+  wp_enqueue_script('myscript', get_template_directory_uri() . '/js/main.js', [], '1.0.0', true);
 }
-add_action('wp_enqueue_scripts', 'brendon_register_styles');
+add_action('wp_enqueue_scripts', 'brendon_register_styles_scripts');
+
+function add_defer_to_script($tag, $handle) {
+    // Add defer to Swiper JS
+    if ('swiper-js' === $handle) {
+        return str_replace('src', 'defer="defer" src', $tag);
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'add_defer_to_script', 10, 2);
 
 
 function register_my_widgets()
@@ -206,6 +209,7 @@ function custom_breadcrumbs() {
     }
 }
 
+
 function cptui_register_my_cpts() {
 
 	/**
@@ -249,9 +253,57 @@ function cptui_register_my_cpts() {
 	];
 
 	register_post_type( "products", $args );
+
+	/**
+	 * Post Type: slider_hero.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "slider_hero", "custom-post-type-ui" ),
+		"singular_name" => esc_html__( "slider_hero", "custom-post-type-ui" ),
+		"menu_name" => esc_html__( "my sliders", "custom-post-type-ui" ),
+		"all_items" => esc_html__( "all sliders", "custom-post-type-ui" ),
+		"add_new" => esc_html__( "add slider", "custom-post-type-ui" ),
+		"add_new_item" => esc_html__( "add slider", "custom-post-type-ui" ),
+		"edit_item" => esc_html__( "edit slider", "custom-post-type-ui" ),
+		"new_item" => esc_html__( "new slider", "custom-post-type-ui" ),
+		"view_item" => esc_html__( "view sliders", "custom-post-type-ui" ),
+	];
+
+	$args = [
+		"label" => esc_html__( "slider_hero", "custom-post-type-ui" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"rest_namespace" => "wp/v2",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"can_export" => false,
+		"rewrite" => [ "slug" => "slider_hero", "with_front" => true ],
+		"query_var" => true,
+		"supports" => [ "title", "editor", "thumbnail", "excerpt", "custom-fields", "page-attributes" ],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type( "slider_hero", $args );
 }
 
 add_action( 'init', 'cptui_register_my_cpts' );
+
+
+add_action( 'init', 'cptui_register_my_cpts' );
+
 function cptui_register_my_cpts_products() {
 
 	/**
@@ -299,6 +351,56 @@ function cptui_register_my_cpts_products() {
 }
 
 add_action( 'init', 'cptui_register_my_cpts_products' );
+
+
+function cptui_register_my_cpts_slider_hero() {
+
+	/**
+	 * Post Type: slider_hero.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "slider_hero", "custom-post-type-ui" ),
+		"singular_name" => esc_html__( "slider_hero", "custom-post-type-ui" ),
+		"menu_name" => esc_html__( "my sliders", "custom-post-type-ui" ),
+		"all_items" => esc_html__( "all sliders", "custom-post-type-ui" ),
+		"add_new" => esc_html__( "add slider", "custom-post-type-ui" ),
+		"add_new_item" => esc_html__( "add slider", "custom-post-type-ui" ),
+		"edit_item" => esc_html__( "edit slider", "custom-post-type-ui" ),
+		"new_item" => esc_html__( "new slider", "custom-post-type-ui" ),
+		"view_item" => esc_html__( "view sliders", "custom-post-type-ui" ),
+	];
+
+	$args = [
+		"label" => esc_html__( "slider_hero", "custom-post-type-ui" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"rest_namespace" => "wp/v2",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"can_export" => false,
+		"rewrite" => [ "slug" => "slider_hero", "with_front" => true ],
+		"query_var" => true,
+		"supports" => [ "title", "editor", "thumbnail" ],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type( "slider_hero", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_slider_hero' );
 
 function register_product_taxonomies() {
     // Register custom taxonomy for 'Products'

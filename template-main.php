@@ -5,7 +5,7 @@
 ?>
 
 
-<?php get_header() ?>
+<?php get_header('main') ?>
 <!-- Header Section Bottom -->
 <section id="contact_header">
     <div class="container">
@@ -36,85 +36,9 @@
 
 <!-- Section About -->
 <?php
-echo do_shortcode('[smartslider3 slider="1"]');
+// echo do_shortcode('[smartslider3 slider="1"]');
 ?>
-<section id="about">
-    <div class="container">
-        <div class="row">
-            <div class="section_header">
-                <h2>About me</h2>
-            </div>
-            <div class="col-md-4 col-sm-4 small_screen">
-                <p>Hello, I’m Brendon, Creative Designert & User Experience Engineer based in New York – I create web
-                    digital products with professional skills and love.</p>
-            </div>
-            <div class="col-md-4 col-sm-4 small_screen">
-                <p>Wed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolorem laudantium, totam
-                    rem aperiam, eaque ip quae ab illo inventore veritatis et quasi.</p>
-            </div>
-            <div class="col-md-4 col-sm-4 small_screen">
-                <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                    aut fugit, sed quia et consequuntur magni perspiciatis unde.</p>
-            </div>
-        </div><!-- end row -->
-        <div class="row about_block">
-            <div class="col-md-3 col-sm-3">
-                <div class="about_block_border">
-                    <img src="<?php echo B_IMG_DIR; ?>icon1.png" alt="">
-                    <h4>WEB DESIGN</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <div class="about_block_border">
-                    <img src="<?php echo B_IMG_DIR; ?>icon2.png" alt="">
-                    <h4>DEVELOPMENT</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <div class="about_block_border">
-                    <img src="<?php echo B_IMG_DIR; ?>icon3.png" alt="">
-                    <h4>PAINTING</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <div class="about_block_border">
-                    <img src="<?php echo B_IMG_DIR; ?>icon4.png" alt="">
-                    <h4>MARKETING</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>Email me
-            </div>
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section>
-<!-- End Section About -->
 
-<!-- Section Counter -->
-<section id="counter">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-3">
-                <span class="counter">76</span>
-                <p>HAPPY CLIENTS</p>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <span class="counter">244</span>
-                <p>PROJECTS COMPLETED</p>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <span class="counter">27</span>
-                <p>NEW CONCEPTS</p>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <span class="counter">11</span>
-                <p>AWARDS WON</p>
-            </div>
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section>
-<!-- END Section Counter -->
 
 
 
