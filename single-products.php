@@ -20,28 +20,23 @@
                     <div class="col-md-9">
                         <div class="blog-content">
                             <div class="blog-img-frame">
-                                <?php 
-$image = get_field('image1');
-if( !empty( $image ) ): ?>
-                                <img src="<?php echo esc_url($image['url']); ?>"
-                                    alt="<?php echo esc_attr($image['alt']); ?>" />
-                                <?php endif; ?>
+                                <?php the_post_thumbnail(array(600, 600), ); ?>
                             </div>
                             <div class="info">
+                                <p><?php the_field('model'); ?></p>
                                 <ul class="blog-list">
                                     <li>Date:<span>&nbsp; January 11, 2015 </span></li>
                                 </ul>
                             </div>
                             <div class="content">
                                 <?php the_content( ) ?>
-                                <p> <?php the_field('model');?></p>
                             </div>
                         </div>
                     </div>
 
                     <!-- BLOG SIDEBAR -->
                     <div class="col-md-3">
-                        <?php get_sidebar(); ?>
+                        <?php get_sidebar() ?>
 
                     </div>
                 </div>

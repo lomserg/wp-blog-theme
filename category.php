@@ -1,4 +1,4 @@
-<?php get_header('category'); ?>
+<?php get_header(); ?>
 
 <section class="blog-section blog-section-bg">
     <div class="breadcrumb">

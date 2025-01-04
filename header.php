@@ -30,53 +30,52 @@
 
 <body>
     <!-- Header Section -->
-    <header class="blog_head_bg blog_head_main">
-        <div class="overlay_color">
-            <div class="mnu_line">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-2 col-xs-12">
-                            <div class="logo_block">
-                                <h1 class="logo"><a href="index.html">B.</a></h1><!-- Change logo text -->
-                            </div>
-                        </div>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <nav class="main_navigation">
-                                <?php
-        wp_nav_menu(array(
-            'theme_location' => 'main_menu', // Название местоположения меню
-            'container' => 'ul', // Использовать тег <ul> для обертки
-            'menu_class' => 'nav', // Класс для <ul>
-            'fallback_cb' => false, // Если меню не задано, не показывать ничего
-        ));
-        ?>
-                            </nav>
-                        </div>
-                    </div> <!-- end row -->
-                </div> <!-- end container -->
+
+
+
+    <nav class="top__nav"></nav>
+    <header class="header container">
+        <div class="header__wrapper">
+            <a href="/wp-sandbox/" class="header-logo__wrapper">
+                <img class="header-logo__logo" src="<?php echo B_IMG_DIR; ?>logo.svg" alt="logo" />
+            </a>
+            <nav class="header__nav">
+                <?php
+                                    wp_nav_menu(array(
+                                        'theme_location' => 'header_navigation', // Correct location name
+                                        'container' => 'ul', // Use <ul> for the wrapper
+                                        'menu_class' => 'header__nav-list', // Class for the <ul> element
+                                          'add_li_class' => 'header__nav-item',
+                                        'fallback_cb' => false, // Disable fallback
+                                    ));
+                                 ?>
+            </nav>
+            <button class="btn-primary green-btn">Отправить запрос</button>
+            <nav class="humburger__menu">
+                <a href="#" class="toggle-btn">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+            </nav>
+        </div>
+
+    </header>
+
+    <section class="shawcace__header">
+        <div class="shawcace__header-container container">
+            <div class="shawcace__header-info">
+                <h1 class="shawcace__header-header"><?php the_title( ) ?></h1>
+                <p class="shawcace__header-text">
+                    Первая российская универсальная многоцелевая платформа для
+                    реализации IP/MPLS-маршрутизатора, BRAS, Service Gateway для сетей
+                    Wi-Fi (SGW-WiFi) и др. EcoRouter поддерживает технологию
+                    контейнерной виртуализации, совместимую со стандартом
+                    Linux-контейнеров (OCI).
+                </p>
             </div>
-            <div class="content_head">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="content_name">
-                                <p class="hello">WELCOME. I AM</p>
-                                <p class="name">BRENDON WILLIAMS</p>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="content_prof">
-                                <p><span>The best designer ever.</span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 clearfix">
-                            <div class="content_download">
-                                <p><a href="download/CV.doc" download>Download CV</a></p>
-                            </div>
-                        </div>
-                    </div><!-- end row -->
-                </div><!-- end container -->
+            <div class="shawcace__header-img">
+                <img src="<?php echo B_IMG_DIR; ?>fin_GREEN_CAR-2080-5.png" alt="" />
             </div>
         </div>
-    </header>
+    </section>
     <!-- End Header -->
