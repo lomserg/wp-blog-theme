@@ -1,14 +1,7 @@
 <?php get_header(); ?>
 
 <section class="blog-section blog-section-bg">
-    <div class="breadcrumb">
-        <nav class="container">
-            <ul>
-                <?php custom_breadcrumbs(); ?>
-            </ul>
-        </nav>
-    </div>
-    <!--./Blog-breadcrumb-->
+
     <div class="blog-wrapper">
         <!-- BEGIN BLOG WRAPPER -->
         <div class="container">

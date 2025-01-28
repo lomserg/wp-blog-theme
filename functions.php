@@ -127,6 +127,7 @@ function brendon_register_styles_scripts() {
     // Enqueue styles
     wp_enqueue_style('bootstrap-css', get_template_directory_uri() . "/css/bootstrap/bootstrap.min.css", [], '1.0', 'all');
     wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", ['bootstrap-css'], '1.0', 'all');
+    // wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", [], '1.0', 'all');
     wp_enqueue_style('swiper-css', get_template_directory_uri() . "/css/swiper/swiper-bundle.min.css", [], '1.0', 'all');
     
     // Enqueue scripts
@@ -177,37 +178,47 @@ add_filter( 'excerpt_length', function(){
 } );
 
 function custom_breadcrumbs() {
-    $delimiter = '&gt;'; // Delimiter between breadcrumb links
-    $home = 'Главная'; // Text for the Home link
-    $before = '<span class="current">'; // Before current page text
-    $after = '</span>'; // After current page text
+    global $post; // Declare the global $post variable
 
-    // Start breadcrumb if we're not on the home or front page, or if the page is paginated
-    if (!is_home() && !is_front_page() || is_paged()) {
-        echo '<div class="breadcrumb"><nav class="container"><ul>';
-        
-        // Home link
-        echo '<li><a href="' . home_url() . '">' . $home . '</a></li>';
+    if (!is_front_page()) {
+        echo '<ul class="breadcrumbs">';
+        echo '<li><a href="' . home_url() . '">Главная</a></li>';
 
-        // Check if we are on a category page
-        if (is_category()) {
-            // Display "Блог" before the category name
-            echo '<li>' . $before . 'Блог' . $after . $delimiter . '</li>';
-            
-            // Get the current category object
-            $category = get_queried_object();
-            echo '<li>' . $before . 'Категория: ' . $category->name . $after . '</li>'; // Display category name
-        } elseif (is_single()) {
-            // If it's a single post, display the post title
-            echo '<li>' . $before . get_the_title() . $after . '</li>';
-        } else {
-            // Default breadcrumb for other pages
-            echo '<li>' . $before . 'Блог' . $after . '</li>';
+        if (is_single()) {
+            $categories = get_the_category();
+            if (!empty($categories)) {
+                $category = $categories[0];
+                echo '<li><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
+            }
+            echo '<li><span class="current">' . get_the_title() . '</span></li>';
+        } elseif (is_page()) {
+            if ($post->post_parent) {
+                $ancestors = array_reverse(get_post_ancestors($post->ID));
+                foreach ($ancestors as $ancestor) {
+                    echo '<li><a href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+                }
+            }
+            echo '<li><span class="current">' . get_the_title() . '</span></li>';
+        } elseif (is_category()) {
+            echo '<li><span class="current">' . single_cat_title('', false) . '</span></li>';
+        } elseif (is_tag()) {
+            echo '<li><span class="current">' . single_tag_title('', false) . '</span></li>';
+        } elseif (is_archive()) {
+            echo '<li><span class="current">' . post_type_archive_title('', false) . '</span></li>';
+        } elseif (is_search()) {
+            echo '<li><span class="current">Результаты поиска: ' . get_search_query() . '</span></li>';
+        } elseif (is_404()) {
+            echo '<li><span class="current">Страница не найдена</span></li>';
         }
 
-        echo '</ul></nav></div>';
+        echo '</ul>';
+    } else {
+        echo '<ul class="breadcrumbs">';
+        echo '<li><span class="current">Главная</span></li>';
+        echo '</ul>';
     }
 }
+
 
 
 function cptui_register_my_cpts() {

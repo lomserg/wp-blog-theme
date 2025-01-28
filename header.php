@@ -33,22 +33,54 @@
 
 
 
-    <nav class="top__nav"></nav>
-    <header class="header container">
+    <!-- <nav class="top__nav"></nav> -->
+    <header class="header ">
         <div class="header__wrapper">
             <a href="/wp-sandbox/" class="header-logo__wrapper">
-                <img class="header-logo__logo" src="<?php echo B_IMG_DIR; ?>logo.svg" alt="logo" />
+                <img class="header-logo__logo"
+                    src="http://localhost/wp-sandbox/wp-content/themes/wp-blog-theme/img/logo.svg" alt="logo">
             </a>
             <nav class="header__nav">
-                <?php
-                                    wp_nav_menu(array(
-                                        'theme_location' => 'header_navigation', // Correct location name
-                                        'container' => 'ul', // Use <ul> for the wrapper
-                                        'menu_class' => 'header__nav-list', // Class for the <ul> element
-                                          'add_li_class' => 'header__nav-item',
-                                        'fallback_cb' => false, // Disable fallback
-                                    ));
-                                 ?>
+                <ul id="menu-header" class="header__nav-list">
+                    <li id="menu-item-185"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185 header__nav-item">
+                        <a>Продукция</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-184"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184 header__nav-item">
+                                <a
+                                    href="http://localhost/wp-sandbox/ip-mpls-%d0%bc%d0%b0%d1%80%d1%88%d1%80%d1%83%d1%82%d0%b8%d0%b7%d0%b0%d1%82%d0%be%d1%80/">IP/MPLS-маршрутизатор</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-152"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-152 header__nav-item">
+                        <a href="#">Где купить</a></li>
+                    <li id="menu-item-139"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139 header__nav-item">
+                        <a href="http://localhost/wp-sandbox/news/">Новости</a></li>
+                    <li id="menu-item-153"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-153 header__nav-item">
+                        <a href="#">Решения</a></li>
+                    <li id="menu-item-140"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-140 header__nav-item">
+                        <a href="http://localhost/wp-sandbox/about/">О компании</a></li>
+                    <li id="menu-item-148"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-148 header__nav-item">
+                        <a>Поддержка</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-149"
+                                class="menu-item menu-item-type-post_type menu-item-object-post menu-item-149 header__nav-item">
+                                <a href="http://localhost/wp-sandbox/node-js/">Node js</a></li>
+                            <li id="menu-item-150"
+                                class="menu-item menu-item-type-post_type menu-item-object-post menu-item-150 header__nav-item">
+                                <a href="http://localhost/wp-sandbox/hello-world-2/">Hello world 2</a></li>
+                            <li id="menu-item-151"
+                                class="menu-item menu-item-type-post_type menu-item-object-post menu-item-151 header__nav-item">
+                                <a href="http://localhost/wp-sandbox/hello-world/">Hello world!</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
             <button class="btn-primary green-btn">Отправить запрос</button>
             <nav class="humburger__menu">
@@ -60,11 +92,30 @@
         </div>
 
     </header>
-
-    <section class="shawcace__header">
+    <section class="container">
+        <h1 class="page__title">
+            <?php
+    if (is_home()) {
+        echo 'Blog'; // Or use your blog's name
+    } elseif (is_archive()) {
+        echo "gHJLERWBZ";
+    } elseif (is_singular()) {
+        the_title();
+    }
+    ?>
+        </h1>
+        <div class="breadcrumb">
+            <nav>
+                <ul>
+                    <?php custom_breadcrumbs(); ?>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <!-- <section class="shawcace__header">
         <div class="shawcace__header-container container">
             <div class="shawcace__header-info">
-                <h1 class="shawcace__header-header"><?php the_title( ) ?></h1>
+                <h1 class="shawcace__header-header"></h1>
                 <p class="shawcace__header-text">
                     Первая российская универсальная многоцелевая платформа для
                     реализации IP/MPLS-маршрутизатора, BRAS, Service Gateway для сетей
@@ -73,9 +124,7 @@
                     Linux-контейнеров (OCI).
                 </p>
             </div>
-            <div class="shawcace__header-img">
-                <img src="<?php echo B_IMG_DIR; ?>fin_GREEN_CAR-2080-5.png" alt="" />
-            </div>
+          
         </div>
-    </section>
+    </section> -->
     <!-- End Header -->

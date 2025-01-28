@@ -1,14 +1,6 @@
-<?php get_header('single'); ?>
+<?php get_header(); ?>
 <section class="blog-section blog-section-bg">
-    <div class="breadcrumb">
-        <nav class="container">
-            <ul>
 
-                <?php custom_breadcrumbs(); ?>
-
-            </ul>
-        </nav>
-    </div>
     <!--./Blog-breadcrumb-->
     <!--  -->
     <div class="blog-wrapper">
@@ -20,11 +12,11 @@
                     <div class="col-md-9">
                         <div class="blog-content">
                             <div class="blog-img-frame">
-                                <?php the_post_thumbnail(array(371, 288), ); ?>
+                                <?php the_post_thumbnail(array(702, 283) ); ?>
                             </div>
                             <div class="info">
                                 <ul class="blog-list">
-                                    <li>Date:<span>&nbsp; January 11, 2015 </span></li>
+                                    <li>Дата:<span>&nbsp; January 11, 2015 </span></li>
                                 </ul>
                             </div>
                             <div class="content">

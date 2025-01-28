@@ -1,14 +1,6 @@
+<!-- Новости -->
 <?php get_header(); ?>
 <section class="blog-section blog-section-bg">
-    <div class="breadcrumb">
-        <nav class="container">
-            <ul>
-
-                <?php custom_breadcrumbs(); ?>
-
-            </ul>
-        </nav>
-    </div>
     <!--./Blog-breadcrumb-->
     <!--  -->
     <div class="blog-wrapper">
@@ -17,7 +9,7 @@
             <div class="row">
                 <div class="blog-list clearfix">
                     <!-- BLOG CONTENT -->
-                    <div class="col-md-9">
+                    <div class="blog__list-wrap">
                         <!------ BEGIN BLOG WRAPPER ------>
                         <div class="blog-content">
                             <?php
@@ -31,7 +23,7 @@
 
                             <?php if ($query->have_posts()) : ?>
                             <?php while ($query->have_posts()) : $query->the_post(); ?>
-                            <div class="col-md-6 col-sm-6">
+                            <div class="blog__item">
                                 <div class="content-box">
                                     <div class="blog-img-frame">
                                         <a class="blog-img" href="<?php the_permalink(); ?>">

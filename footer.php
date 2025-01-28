@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="copyright">
-                    <p>Copyright &copy; Brendon 2023. All righrs reserved</p>
+                    <p> &copy; EcoRouter (ООО "РДП Инновации")
+                        Все права защищены</p>
                 </div>
             </div>
         </div><!-- end row -->

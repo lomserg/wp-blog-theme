@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("swiper load");
   const swiper = new Swiper(".swiper", {
-    // loop: true,
+    loop: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

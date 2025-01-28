@@ -33,7 +33,6 @@
 
 
 
-    <nav class="top__nav"></nav>
     <header class="header ">
         <div class="header__wrapper">
             <a href="/wp-sandbox/" class="header-logo__wrapper">
@@ -63,8 +62,8 @@
 
 
 
-    <section aria-label="Hero Slider">
-        <div class="swiper slider-container">
+    <section class="hero__slider">
+        <div class="swiper slider-container hero__slider-border">
             <!-- Swiper Wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -81,7 +80,8 @@
                 <div class="swiper-slide hero"
                     style="background-image: url('<?php echo $slider_image ? $slider_image : get_template_directory_uri() . "/images/default.jpg"; ?>')">
                     <div class="hero__wrapper">
-                        <h2 class="hero__title"><?php the_title(); ?></h2>
+                        <?php $slider_header = get_field('header_slider_w'); ?>
+                        <?php echo $slider_header ; ?>
                         <?php 
                         // Check if there is an excerpt or content to show
                         $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 20, '...');
@@ -89,7 +89,8 @@
                         ?>
                         <p class="hero__text"><?php echo $excerpt; ?></p>
                         <?php endif; ?>
-                        <?php $slider_link = get_field('slider_link'); ?>
+                        <?php $slider_link = get_field('link_btn'); ?>
+
                         <a href="<?php echo $slider_link ; ?>" class="btn-primary">Подробнее</a>
                     </div>
                 </div>
