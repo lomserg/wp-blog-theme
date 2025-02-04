@@ -1,6 +1,10 @@
 <?php get_header(); ?>
 <section class="blog-section blog-section-bg">
-
+    <?php
+global $post;
+$parent_permalink = get_permalink( $post->post_parent );
+?>
+    <?php echo $parent_permalink; ?>
     <!--./Blog-breadcrumb-->
     <!--  -->
     <div class="blog-wrapper">

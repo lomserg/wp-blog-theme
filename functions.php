@@ -125,9 +125,9 @@ function special_nav_class ($classes, $item) {
 // Enqueue styles
 function brendon_register_styles_scripts() {
     // Enqueue styles
-    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . "/css/bootstrap/bootstrap.min.css", [], '1.0', 'all');
-    wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", ['bootstrap-css'], '1.0', 'all');
-    // wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", [], '1.0', 'all');
+    // wp_enqueue_style('bootstrap-css', get_template_directory_uri() . "/css/bootstrap/bootstrap.min.css", [], '1.0', 'all');
+    // wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", ['bootstrap-css'], '1.0', 'all');
+     wp_enqueue_style('style-css', get_template_directory_uri() . "/css/style.css", [], '1.0', 'all');
     wp_enqueue_style('swiper-css', get_template_directory_uri() . "/css/swiper/swiper-bundle.min.css", [], '1.0', 'all');
     
     // Enqueue scripts
@@ -137,7 +137,13 @@ function brendon_register_styles_scripts() {
   wp_enqueue_script('myscript', get_template_directory_uri() . '/js/main.js', [], '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'brendon_register_styles_scripts');
-
+// Ensure scripts are loaded on 404 pages
+function load_scripts_on_404() {
+    if (is_404()) {
+        do_action('wp_enqueue_scripts');
+    }
+}
+add_action('template_redirect', 'load_scripts_on_404');
 function add_defer_to_script($tag, $handle) {
     // Add defer to Swiper JS
     if ('swiper-js' === $handle) {
@@ -167,7 +173,10 @@ function register_my_widgets()
 add_action('widgets_init', 'register_my_widgets');
 
 function register_my_menu() {
-    register_nav_menu('main_menu', 'Primary Menu'); // Регистрация меню с названием 'primary'
+    register_nav_menus( array(
+        'main_menu' => 'Primary Menu',
+        'burger_menu' => 'Burger Menu',
+    )); // Регистрация меню с названием 'primary'
 }
 add_action('after_setup_theme', 'register_my_menu');
 

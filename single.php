@@ -12,7 +12,7 @@
                     <div class="col-md-9">
                         <div class="blog-content">
                             <div class="blog-img-frame">
-                                <?php the_post_thumbnail(array(702, 283) ); ?>
+                                <?php the_post_thumbnail(array(1024, 576) ); ?>
                             </div>
                             <div class="info">
                                 <ul class="blog-list">

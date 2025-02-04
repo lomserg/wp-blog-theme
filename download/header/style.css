@@ -88,10 +88,6 @@ a {
 /* ////// */
 /* HEADER */
 /* ////// */
-.top__nav {
-  height: 24px;
-  background-color: blue;
-}
 
 .header__wrapper {
   display: flex;
@@ -151,4 +147,16 @@ a {
 }
 .humburger__menu {
   display: none;
+}
+
+/* Hide sub-menus by default */
+.burger__menu_main .sub-menu {
+  display: none;
+  list-style: none;
+  padding-left: 10px;
+}
+
+/* Optional: Style for the active parent */
+.burger__menu_main .menu-item-has-children.active > a {
+  font-weight: bold;
 }

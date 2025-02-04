@@ -1,5 +1,6 @@
 <!-- Новости -->
 <?php get_header(); ?>
+
 <section class="blog-section blog-section-bg">
     <!--./Blog-breadcrumb-->
     <!--  -->
@@ -47,9 +48,11 @@
 
                             <?php endwhile; ?>
 
-                            <!-- Pagination -->
-                            <div class="pagination">
-                                <?php 
+
+                        </div>
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <?php 
                                     echo paginate_links(array(
                                         'total' => $query->max_num_pages, // Total number of pages
                                         'prev_text' => 'Назад', // Text for the previous page link
@@ -59,12 +62,11 @@
                                         'class' => 'box-pagination'
                                     ));
                                     ?>
-                            </div>
-
-                            <?php else : ?>
-                            <p>No posts found.</p>
-                            <?php endif; ?>
                         </div>
+
+                        <?php else : ?>
+                        <p>No posts found.</p>
+                        <?php endif; ?>
                     </div>
                     <!-- BLOG SIDEBAR -->
                     <div class="col-md-3">
