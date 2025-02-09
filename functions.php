@@ -429,7 +429,7 @@ function register_product_taxonomies() {
         'products',           // Post type
         array(
             'label' => 'Product Categories',
-            'rewrite' => array('slug' => 'product-category'),
+            'rewrite' => array('slug' => 'category'),
             'hierarchical' => true,  // Hierarchical like categories (not tags)
             'show_in_rest' => true,
         )

@@ -4,7 +4,7 @@
 global $post;
 $parent_permalink = get_permalink( $post->post_parent );
 ?>
-    <?php echo $parent_permalink; ?>
+    <!-- <?php echo $parent_permalink; ?> -->
     <!--./Blog-breadcrumb-->
     <!--  -->
     <div class="blog-wrapper">
@@ -110,10 +110,10 @@ $parent_permalink = get_permalink( $post->post_parent );
                     </div>
 
                     <!-- BLOG SIDEBAR -->
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <?php get_sidebar() ?>
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

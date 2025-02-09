@@ -1229,7 +1229,7 @@ footer .logo a {
 
 .blog-img-frame img {
   width: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .blog_block .blog-img-frame img {
