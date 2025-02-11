@@ -2409,6 +2409,8 @@ a {
 /* product section */
 .product {
   background: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
 }
 .products__section {
   margin-top: 5rem;
@@ -2566,6 +2568,9 @@ a {
   position: relative;
 }
 
+.typ {
+  margin-top: 3rem;
+}
 .products {
   display: flex;
   gap: 1rem;
@@ -2700,6 +2705,7 @@ a {
 
 .tab__container {
   padding: 30px;
+  max-width: 1000px;
 }
 .tab__box {
   width: 100%;
@@ -2742,11 +2748,11 @@ a {
 
 .content__box .content_tab.active {
   display: block;
+  min-height: 500px;
 }
 .content__box .content_tab h2 {
   margin-bottom: 20px;
 }
-
 .line {
   position: absolute;
   top: 60px;
@@ -2838,4 +2844,49 @@ a {
 .advantages__wrapper-item-start {
   min-width: 360px;
   width: 360px;
+}
+
+/* timeline */
+
+.timeline {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #4caf50;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  margin-left: -2px;
+}
+.entry {
+  position: relative;
+  margin: 20px 0;
+  padding-left: 50px;
+}
+.entry::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  left: 14px;
+  top: 5px;
+}
+.year {
+  font-weight: bold;
+  color: #333;
+}
+.details {
+  font-size: 14px;
+  color: #555;
+}
+.italic {
+  font-style: italic;
+  color: #777;
 }

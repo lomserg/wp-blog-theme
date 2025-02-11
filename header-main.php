@@ -10,10 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Favicon and Apple Touch Icons -->
-    <link rel="shortcut icon" href="<?php echo B_IMG_DIR; ?>favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="<?php echo B_IMG_DIR; ?>favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo B_IMG_DIR; ?>favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo B_IMG_DIR; ?>favicon/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="<?php echo B_IMG_DIR; ?>favicon/favicon_6.ico" type="image/x-icon">
+
 
     <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">

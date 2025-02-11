@@ -28,7 +28,7 @@
                                 <div class="content-box">
                                     <div class="blog-img-frame">
                                         <a class="blog-img" href="<?php the_permalink(); ?>">
-                                            <?php the_post_thumbnail(array(371, 288), ); ?>
+                                            <?php the_post_thumbnail(array(768, 432), ); ?>
                                         </a>
                                     </div>
                                     <div class="content">
